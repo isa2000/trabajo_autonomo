@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  // directUrl = env("DIRECT_URL")
+}
+
+model Producto {
+  id_producto Int      @id @default(autoincrement()) @map("ID_PRODUCT")
+  nombre      String
+  activo      Boolean  @default(true)
+  descripcion String?
+  precio      Decimal  @db.Decimal(5, 2)
+  Pedido      Pedido[]
+}
+
+model Pedido {
+  Id_pedido                Int       @id @default(autoincrement())
+  id_producto              Int
+  id_cliente               Int
+  fecha_pedido             DateTime
+  estado                   String
+  activo                   Boolean   @default(true)
+  total                    Decimal   @db.Decimal(5, 2)
+  porcentaje_mantenimiento Decimal   @db.Decimal(5, 2)
+  producto                 Producto? @relation(fields: [id_producto], references: [id_producto])
+  cliente                  Cliente?  @relation(fields: [id_cliente], references: [id_cliente])
+}
+
+model Cliente {
+  id_cliente       Int      @id @default(autoincrement()) @map("ID_CLIENTE")
+  nombres          String
+  cedula           String   @unique
+  fecha_nacimiento DateTime
+  telefono         String?
+  activo           Boolean  @default(true)
+  email            String
+  pedidos          Pedido[]
+}
