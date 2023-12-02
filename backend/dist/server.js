@@ -16,19 +16,26 @@ exports.prisma = void 0;
 // import http from 'http';
 const express_1 = __importDefault(require("express"));
 const client_1 = require("@prisma/client");
-const pedido_route_1 = __importDefault(require("./src/rutas/pedido.route"));
-const producto_route_1 = __importDefault(require("./src/rutas/producto.route"));
-const cliente_route_1 = __importDefault(require("./src/rutas/cliente.route"));
+const pedido_route_1 = __importDefault(require("./src/routes/pedido.route"));
+const producto_route_1 = __importDefault(require("./src/routes/producto.route"));
+const cliente_route_1 = __importDefault(require("./src/routes/cliente.route"));
+const views_route_1 = __importDefault(require("./src/routes/views.route"));
+const path_1 = __importDefault(require("path"));
 exports.prisma = new client_1.PrismaClient();
+// const exphbs  = require('express-handlebars');
 const app = (0, express_1.default)();
 const port = process.env.PORT;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         app.use(express_1.default.json());
+        app.set('views', path_1.default.join(__dirname, 'views'));
+        app.set('view engine', 'hbs');
+        app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
         // Register API routes
         app.use("/api/v1/", pedido_route_1.default);
         app.use("/api/v1/", cliente_route_1.default);
         app.use("/api/v1/", producto_route_1.default);
+        app.use('/', views_route_1.default);
         // Catch unregistered routes
         app.all("*", (req, res) => {
             res.status(404).json({ error: `Ruta ${req.originalUrl} no encontrada` });
