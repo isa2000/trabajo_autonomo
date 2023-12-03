@@ -1,0 +1,47 @@
+<p>ingreso-pedidos works!</p>
+
+<form (ngSubmit)="guardarPedido()" class="p-3 border rounded">
+    <div class="mb-3">
+        <label for="nombre" class="form-label">estado:</label>
+        <input type="text" id="nombre" name="nombre" required [(ngModel)]="pedido.estdado" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">total:</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="pedido.total" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="telefono" class="form-label">porcentaje de almacenamiento:</label>
+        <input type="tel" id="telefono" name="telefono" required [(ngModel)]="pedido.porcentaje_mantenimiento" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="cliente" class="form-label">Cliente:</label>
+        <select id="cliente" name="cliente" required [(ngModel)]="pedido.cliente_id" class="form-select">
+          <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nombres }}</option>
+        </select>
+      </div>
+      
+      <div class="mb-3">
+        <label for="producto" class="form-label">Producto:</label>
+        <select id="producto" name="producto" required [(ngModel)]="pedido.producto_id" class="form-select">
+          <option *ngFor="let producto of productos" [value]="producto.id">{{ producto.nombre }}</option>
+        </select>
+      </div>
+
+    <div class="mb-3">
+        <label for="fecha_nacimiento" class="form-label">Fecha pedido:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required [(ngModel)]="fecha" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+</form>
+
+<div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>

@@ -4,6 +4,7 @@ import {  PrismaClient} from '@prisma/client'
 import PedidoRouter from './src/routes/pedido.route'
 import ProductoRouter from './src/routes/producto.route'
 import ClienteRouter from './src/routes/cliente.route'
+import cors from 'cors';
 // import path from 'path';
 
 export const prisma = new PrismaClient();
@@ -12,6 +13,7 @@ export const prisma = new PrismaClient();
 
 const app = express();
 const port = process.env.PORT;
+app.use(cors({ origin: 'http://localhost:4200' }));
 
 async function main() {
   app.use(express.json());

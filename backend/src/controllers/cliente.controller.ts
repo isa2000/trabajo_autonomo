@@ -13,9 +13,13 @@ const crearCliente = async (req: Request, res: Response) => {
                 telefono
             },
         });
-        res.status(200).json(nuevoCliente);
+        res.status(200).json({
+            'data': nuevoCliente,
+            'message':"cliente creado con exito"
+        });
     } catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ error: e ,
+        'message':'error al crear el cliente, recuerde que la cedula no se puede repetir y que todos los campos sonrequeridos'});
     }
 };
 

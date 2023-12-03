@@ -6,17 +6,39 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { IngresoClientesComponent } from './pages/ingreso-clientes/ingreso-clientes.component';
+import { IngresoProductosComponent } from './pages/ingreso-productos/ingreso-productos.component';
+import { IngresoPedidosComponent } from './pages/ingreso-pedidos/ingreso-pedidos.component';
+import { VerPedidosComponent } from './pages/ver-pedidos/ver-pedidos.component';
+import { VerProductosComponent } from './pages/ver-productos/ver-productos.component';
+import { VerClientesComponent } from './pages/ver-clientes/ver-clientes.component';
+import { VerClienteComponent } from './pages/ver-cliente/ver-cliente.component';
+import { VerProductoComponent } from './pages/ver-producto/ver-producto.component';
+import { VerPedidoComponent } from './pages/ver-pedido/ver-pedido.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
+
+export const url = 'http://localhost:3000/api/v1/';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    IngresoClientesComponent
+    IngresoClientesComponent,
+    IngresoProductosComponent,
+    IngresoPedidosComponent,
+    VerPedidosComponent,
+    VerProductosComponent,
+    VerClientesComponent,
+    VerClienteComponent,
+    VerProductoComponent,
+    VerPedidoComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
