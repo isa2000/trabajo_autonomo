@@ -1,1 +1,28 @@
-<p>ver-pedidos works!</p>
+<div class="container mt-4">
+    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#agregarPedidoModal">
+      Agregar Pedido
+    </button>
+  
+    <div class="row row-cols-1 row-cols-md-1 g-4 ">
+      <!-- Lista de Clientes -->
+      <div class="col" *ngFor="let pedido of pedidos">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title">{{ pedido.estado }}</h5>
+            <p class="card-text">{{ pedido.fecha_pedido | formatDate}}</p>
+  
+            <!-- Botones de Acción -->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-outline-primary me-md-2" (click)="verPedido(pedido.Id_pedido)">Ver</button>
+              <!-- <button class="btn btn-outline-warning me-md-2" (click)="editarCliente(cliente.id)">Editar</button> -->
+              <button class="btn btn-outline-danger" (click)="eliminarPedido(pedido.Id_pedido)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal para Ingreso de Clientes -->
+  <app-ingreso-pedidos (modalCerrado)="actualizarPedidos()" class="modal fade" id="agregarPedidoModal" tabindex="-1" aria-labelledby="modalTitle"
+    aria-hidden="true"></app-ingreso-pedidos>

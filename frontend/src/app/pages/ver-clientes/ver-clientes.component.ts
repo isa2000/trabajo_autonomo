@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -10,9 +10,12 @@ import { ClienteService } from 'src/app/services/cliente.service';
 })
 export class VerClientesComponent implements OnInit {
 
+  @ViewChild('modalIngresoClientes') modalIngresoClientes: any;
+
   errorMessage:String = ''
   clientes:any = []
   succesMessage:String = ''
+  cliente_id:any
 
   constructor(private clienteService:ClienteService, private router: Router){}
   ngOnInit(): void {
@@ -54,6 +57,10 @@ export class VerClientesComponent implements OnInit {
         throw e
       })
     ).subscribe()
+  }
+
+  actualizarClientes() {
+    this.obtenerClientes()
   }
 
 }

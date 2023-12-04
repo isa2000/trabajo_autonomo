@@ -12,7 +12,7 @@ import { VerProductoComponent } from './pages/ver-producto/ver-producto.componen
 import { VerPedidoComponent } from './pages/ver-pedido/ver-pedido.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/ingreso-clientes', pathMatch:'full'},
+  {path: '', redirectTo: '/home', pathMatch:'full'},
   {path:'home', component:HomeComponent},
   {path:'ingreso-clientes', component:IngresoClientesComponent},
   {path:'ingreso-pedidos', component:IngresoPedidosComponent},

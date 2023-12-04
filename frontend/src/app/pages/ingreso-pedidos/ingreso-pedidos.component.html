@@ -1,47 +1,67 @@
-<p>ingreso-pedidos works!</p>
 
-<form (ngSubmit)="guardarPedido()" class="p-3 border rounded">
-    <div class="mb-3">
-        <label for="nombre" class="form-label">estado:</label>
-        <input type="text" id="nombre" name="nombre" required [(ngModel)]="pedido.estdado" class="form-control">
+<div class="modal-dialog pos modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle">Agregar Pedido</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
+    <div class="modal-body">
 
-    <div class="mb-3">
-        <label for="email" class="form-label">total:</label>
-        <input type="email" id="email" name="email" required [(ngModel)]="pedido.total" class="form-control">
-    </div>
+      <form class="p-3 border rounded">
 
-    <div class="mb-3">
-        <label for="telefono" class="form-label">porcentaje de almacenamiento:</label>
-        <input type="tel" id="telefono" name="telefono" required [(ngModel)]="pedido.porcentaje_mantenimiento" class="form-control">
-    </div>
+        <div class="mb-3">
+          <label for="estado" class="form-label">Estado:</label>
+          <select id="estado" name="cliente" required [(ngModel)]="pedido.estado" class="form-select">
+            <option value="pendiente">pendiente</option>
+            <option value="cancelado">cancelado</option>
+            <option value="finalizado">finalizado</option>
+          </select>
+        </div>
 
-    <div class="mb-3">
-        <label for="cliente" class="form-label">Cliente:</label>
-        <select id="cliente" name="cliente" required [(ngModel)]="pedido.cliente_id" class="form-select">
-          <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nombres }}</option>
-        </select>
+        <div class="mb-3">
+          <label for="total" class="form-label">total:</label>
+          <input type="number" id="total" name="total" required [(ngModel)]="pedido.total" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="porcentaje_mantenimiento" class="form-label">porcentaje de almacenamiento:</label>
+          <input type="number" id="porcentaje_mantenimiento" name="porcentaje_mantenimiento" required [(ngModel)]="pedido.porcentaje_mantenimiento"
+            class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="cliente" class="form-label">Cliente:</label>
+          <select id="cliente" name="cliente" required [(ngModel)]="pedido.id_cliente" class="form-select">
+            <option *ngFor="let cliente of clientes" [value]="cliente.id_cliente">{{ cliente.nombres }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="producto" class="form-label">Producto:</label>
+          <select id="producto" name="producto" required [(ngModel)]="pedido.id_producto" class="form-select">
+            <option *ngFor="let producto of productos" [value]="producto.id_producto">{{ producto.nombre }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha pedido:</label>
+          <input type="date" id="fecha" name="fecha" required [(ngModel)]="fecha"
+            class="form-control">
+        </div>
+      </form>
+
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
       </div>
-      
-      <div class="mb-3">
-        <label for="producto" class="form-label">Producto:</label>
-        <select id="producto" name="producto" required [(ngModel)]="pedido.producto_id" class="form-select">
-          <option *ngFor="let producto of productos" [value]="producto.id">{{ producto.nombre }}</option>
-        </select>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
       </div>
 
-    <div class="mb-3">
-        <label for="fecha_nacimiento" class="form-label">Fecha pedido:</label>
-        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required [(ngModel)]="fecha" class="form-control">
     </div>
-
-    <button type="submit" class="btn btn-primary">Guardar Cliente</button>
-</form>
-
-<div *ngIf="successMessage" class="alert alert-success">
-    {{ successMessage }}
+    <div class="modal-footer">
+      <button type="button" (click)="cerrarModal()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      <button type="submit" (click)="guardarPedido()" class="btn btn-primary">Guardar Pedido</button>
+    </div>
   </div>
-  
-  <div *ngIf="errorMessage" class="alert alert-danger">
-    {{ errorMessage }}
-  </div>
+</div>

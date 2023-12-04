@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { tap, catchError } from 'rxjs/operators';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { PedidoService } from 'src/app/services/pedido.service';
@@ -11,6 +11,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class IngresoPedidosComponent implements OnInit {
 
+  @Output() modalCerrado: EventEmitter<any> = new EventEmitter<any>();
   pedido: any = {};
   errorMessage!: string;
   fecha: any
@@ -47,13 +48,21 @@ export class IngresoPedidosComponent implements OnInit {
     
   }
 
-
+  
+  cerrarModal(){
+    this.modalCerrado.emit();
+  }
   guardarPedido() {
 
     this.errorMessage = ''
     this.successMessage = ''
     const fechaSeleccionada = new Date(this.fecha)
-    this.pedido.fecha_pedido = fechaSeleccionada.toISOString();
+    this.pedido.fecha_pedido = fechaSeleccionada.toISOString()
+
+
+    this.pedido.id_cliente = parseInt(this.pedido.id_cliente)
+
+    this.pedido.id_producto = parseInt(this.pedido.id_producto)
 
     this.pedidoService.ingresarPedido(this.pedido).pipe(
 
@@ -72,8 +81,6 @@ export class IngresoPedidosComponent implements OnInit {
       )
 
     ).subscribe();
-
-    this.pedido
 
   }
 

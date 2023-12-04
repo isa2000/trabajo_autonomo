@@ -13,7 +13,7 @@ const server_1 = require("../../server");
 const crearPedido = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id_cliente, id_producto, fecha_pedido, estado, total, porcentaje_mantenimiento } = req.body;
-        const newBlogPost = yield server_1.prisma.pedido.create({
+        const nuevoPedido = yield server_1.prisma.pedido.create({
             data: {
                 id_cliente,
                 id_producto,
@@ -23,10 +23,13 @@ const crearPedido = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 porcentaje_mantenimiento
             },
         });
-        res.status(200).json(newBlogPost);
+        res.status(200).json({
+            'data': nuevoPedido,
+            'message': 'pedido creado con exito'
+        });
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "no se pudo crear el pedido" });
     }
 });
 const obtenerPedidos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -39,7 +42,7 @@ const obtenerPedidos = (req, res) => __awaiter(void 0, void 0, void 0, function*
         res.status(200).json(pedidos);
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "no se pudo obtener los pedidos" });
     }
 });
 const obtenerPedido = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -54,7 +57,7 @@ const obtenerPedido = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         res.status(200).json(pedido);
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "no se pudo obtener el pedido" });
     }
 });
 const actualizarPedido = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -73,10 +76,13 @@ const actualizarPedido = (req, res) => __awaiter(void 0, void 0, void 0, functio
                 porcentaje_mantenimiento
             },
         });
-        res.status(200).json(actualizarPedido);
+        res.status(200).json({
+            'data': actualizarPedido,
+            'message': 'pedido actualizado con exito'
+        });
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "no se pudo actualizar el pedido" });
     }
 });
 const eliminarPedido = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -91,10 +97,13 @@ const eliminarPedido = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 activo: false
             }
         });
-        res.status(200).json(eliminarPedido);
+        res.status(200).json({
+            'data': eliminarPedido,
+            'message': 'pedido creado con exito'
+        });
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "no se pudo eliminar el pedido" });
     }
 });
 exports.default = {

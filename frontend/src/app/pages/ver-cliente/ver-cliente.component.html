@@ -1,39 +1,49 @@
-<button (click)="editarCliente()" class="btn btn-primary mb-3">Editar</button>
+<div class="container mt-4">
 
-<form (ngSubmit)="guardarCliente()" class="p-3 border rounded">
-    <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" [readonly]="!editing" required [(ngModel)]="cliente.nombres" class="form-control">
+    <div class="p-3  mx-auto mb-3" style="max-width: 600px;">
+        <h1>INFORMACION DE CLIENTES </h1>
     </div>
 
-    <div class="mb-3">
-        <label for="email" class="form-label">Email:</label>
-        <input type="email" id="email" name="email" [readonly]="!editing" required [(ngModel)]="cliente.email" class="form-control">
+    <form class="p-3 border rounded mx-auto" style="max-width: 600px;">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" [readonly]="!editing" required [(ngModel)]="cliente.nombres" class="form-control">
+        </div>
+    
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" [readonly]="!editing" required [(ngModel)]="cliente.email" class="form-control">
+        </div>
+    
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" [readonly]="!editing" required [(ngModel)]="cliente.telefono" class="form-control">
+        </div>
+    
+        <div class="mb-3">
+            <label for="cedula" class="form-label">Cédula:</label>
+            <input type="tel" id="cedula" name="cedula" [readonly]="!editing" required [(ngModel)]="cliente.cedula" class="form-control">
+        </div>
+    
+        <div class="mb-3">
+            <label for="fecha_nacimiento" class="form-label">Fecha Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" [readonly]="!editing" required [(ngModel)]="fecha_nacimiento" class="form-control">
+        </div>
+    
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <button (click)="editarCliente()" class="btn btn-primary mb-3">Editar</button>
+            <button *ngIf="editMode" type="button" (click)="guardarCliente()" class="btn btn-primary">Guardar Cliente</button>
+        </div>
+       
+    </form>
+    
+    <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
     </div>
-
-    <div class="mb-3">
-        <label for="telefono" class="form-label">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" [readonly]="!editing" required [(ngModel)]="cliente.telefono" class="form-control">
+    
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
     </div>
-
-    <div class="mb-3">
-        <label for="cedula" class="form-label">Cédula:</label>
-        <input type="tel" id="cedula" name="cedula" [readonly]="!editing" required [(ngModel)]="cliente.cedula" class="form-control">
-    </div>
-
-    <div class="mb-3">
-        <label for="fecha_nacimiento" class="form-label">Fecha Nacimiento:</label>
-        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" [readonly]="!editing" required [(ngModel)]="fecha_nacimiento" class="form-control">
-    </div>
-
-    <button *ngIf="editMode" type="submit" class="btn btn-primary">Guardar Cliente</button>
-</form>
-
-<div *ngIf="successMessage" class="alert alert-success">
-    {{ successMessage }}
+    
+    
 </div>
-
-<div *ngIf="errorMessage" class="alert alert-danger">
-    {{ errorMessage }}
-</div>
-

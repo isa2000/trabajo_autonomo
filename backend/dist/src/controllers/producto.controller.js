@@ -20,10 +20,13 @@ const crearProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* 
                 descripcion,
             },
         });
-        res.status(200).json(nuevoProducto);
+        res.status(200).json({
+            'data': nuevoProducto,
+            'message': "producto creado con exito"
+        });
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "no se pudo crear el producto" });
     }
 });
 const obtenerProductos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -36,7 +39,7 @@ const obtenerProductos = (req, res) => __awaiter(void 0, void 0, void 0, functio
         res.status(200).json(productos);
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "no se pudo obtener los productos" });
     }
 });
 const obtenerProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -51,7 +54,7 @@ const obtenerProducto = (req, res) => __awaiter(void 0, void 0, void 0, function
         res.status(200).json(producto);
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "no se pudo obtener el producto" });
     }
 });
 const actualizarProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -69,10 +72,13 @@ const actualizarProducto = (req, res) => __awaiter(void 0, void 0, void 0, funct
                 descripcion,
             },
         });
-        res.status(200).json(actualizarProducto);
+        res.status(200).json({
+            'data': actualizarProducto,
+            'message': "producto creado con exito"
+        });
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "no se pudo actualizar el producto" });
     }
 });
 const eliminarProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -87,10 +93,13 @@ const eliminarProducto = (req, res) => __awaiter(void 0, void 0, void 0, functio
                 activo: false
             }
         });
-        res.status(200).json(eliminarProducto);
+        res.status(200).json({
+            'data': eliminarProducto,
+            'message': "producto creado con exito"
+        });
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "no se pudo eliminar el producto" });
     }
 });
 exports.default = {

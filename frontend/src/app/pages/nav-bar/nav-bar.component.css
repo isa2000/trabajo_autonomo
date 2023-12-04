@@ -1,0 +1,23 @@
+/* navbar.component.css o navbar.component.scss */
+
+.nav-button {
+    text-align: center; /* Centrar texto dentro del botón */
+    margin: 0; /* Eliminar márgenes */
+  }
+  
+  .nav-button a {
+    display: block;
+    padding: 0.5rem; /* Ajusta el padding según sea necesario */
+    color: #ffffff; /* Color del texto del botón */
+    text-decoration: none;
+  }
+  
+  .nav-button:hover {
+    background-color: #343a50; /* Cambia el color al pasar el mouse */
+  }
+  
+  .nav-button.active {
+    background-color: #343a40; /* Color de fondo del botón activo */
+  }
+  
+

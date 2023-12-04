@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { catchError, tap } from 'rxjs';
 import { ProductoService } from 'src/app/services/producto.service';
 
@@ -9,14 +9,19 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class IngresoProductosComponent {
 
+  @Output() modalCerrado: EventEmitter<any> = new EventEmitter<any>();
   producto: any = {};
   errorMessage!: string;
   successMessage!: String;
 
   constructor(private productoService: ProductoService) { }
 
+  
+  cerrarModal(){
+    this.modalCerrado.emit();
+  }
 
-  guardarCliente() {
+  guardarProducto() {
 
     this.errorMessage = ''
     this.successMessage = ''

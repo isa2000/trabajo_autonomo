@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { tap, catchError } from 'rxjs/operators';
 
@@ -10,6 +10,7 @@ import { tap, catchError } from 'rxjs/operators';
 export class IngresoClientesComponent {
 
 
+  @Output() modalCerrado: EventEmitter<any> = new EventEmitter<any>();
   cliente: any = {};
   errorMessage!: string;
   fecha: any
@@ -17,6 +18,9 @@ export class IngresoClientesComponent {
 
   constructor(private clienteService: ClienteService) { }
 
+  cerrarModal(){
+    this.modalCerrado.emit();
+  }
 
   guardarCliente() {
 

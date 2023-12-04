@@ -11,9 +11,12 @@ const crearProducto = async (req: Request, res: Response) => {
                 descripcion,
             },
         });
-        res.status(200).json(nuevoProducto);
+        res.status(200).json({
+            'data':nuevoProducto,
+            'message':"producto creado con exito"
+        });
     } catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message':"no se pudo crear el producto" });
     }
 };
 
@@ -26,7 +29,7 @@ const obtenerProductos = async (req: Request, res: Response) => {
         });
         res.status(200).json(productos);
     } catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message':"no se pudo obtener los productos" });
     }
 };
 
@@ -41,7 +44,7 @@ const obtenerProducto = async (req: Request, res: Response) => {
         });
         res.status(200).json(producto);
     } catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message':"no se pudo obtener el producto" });
     }
 };
 
@@ -60,9 +63,12 @@ const actualizarProducto = async (req: Request, res: Response) => {
                 descripcion,
             },
         });
-        res.status(200).json(actualizarProducto);
+        res.status(200).json({
+            'data':actualizarProducto,
+            'message':"producto creado con exito"
+        });
     } catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message':"no se pudo actualizar el producto" });
     }
 };
 
@@ -79,9 +85,12 @@ const eliminarProducto = async (req: Request, res: Response) => {
                 activo: false
             }
         });
-        res.status(200).json(eliminarProducto);
+        res.status(200).json({
+            'data':eliminarProducto,
+            'message':"producto creado con exito"
+        });
     } catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message':"no se pudo eliminar el producto" });
     }
 };
 

@@ -1,1 +1,28 @@
-<p>ver-productos works!</p>
+<div class="container mt-4">
+    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#agregarProductoModal">
+      Agregar Producto
+    </button>
+  
+    <div class="row row-cols-1 row-cols-md-1 g-4">
+      <!-- Lista de Clientes -->
+      <div class="col" *ngFor="let producto of productos">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title">{{ producto.nombre }}</h5>
+            <p class="card-text">{{ producto.precio }}</p>
+  
+            <!-- Botones de Acción -->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-outline-primary me-md-2" (click)="verProducto(producto.id_producto)">Ver</button>
+              <!-- <button class="btn btn-outline-warning me-md-2" (click)="editarCliente(cliente.id)">Editar</button> -->
+              <button class="btn btn-outline-danger" (click)="eliminarProducto(producto.id_producto)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal para Ingreso de Clientes -->
+  <app-ingreso-productos (modalCerrado)="actualizarProductos()" class="modal fade" id="agregarProductoModal" tabindex="-1" aria-labelledby="modalTitle"
+    aria-hidden="true"></app-ingreso-productos>

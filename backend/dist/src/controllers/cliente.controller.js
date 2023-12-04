@@ -28,8 +28,10 @@ const crearCliente = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         });
     }
     catch (e) {
-        res.status(500).json({ error: e,
-            'message': 'error al crear el cliente, recuerde que la cedula no se puede repetir y que todos los campos sonrequeridos' });
+        res.status(500).json({
+            error: e,
+            'message': 'error al crear el cliente, recuerde que la cedula no se puede repetir y que todos los campos sonrequeridos'
+        });
     }
 });
 const obtenerClientes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -42,7 +44,7 @@ const obtenerClientes = (req, res) => __awaiter(void 0, void 0, void 0, function
         res.status(200).json(clientes);
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "error al obtener los clientes" });
     }
 });
 const obtenerCliente = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -57,7 +59,7 @@ const obtenerCliente = (req, res) => __awaiter(void 0, void 0, void 0, function*
         res.status(200).json(cliente);
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "error al obtener el cliente" });
     }
 });
 const actualizarCliente = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -77,10 +79,13 @@ const actualizarCliente = (req, res) => __awaiter(void 0, void 0, void 0, functi
                 telefono
             },
         });
-        res.status(200).json(actualizarCliente);
+        res.status(200).json({
+            'data': actualizarCliente,
+            'message': "cliente actualizado con exito"
+        });
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "error al actualizar el cliente" });
     }
 });
 const eliminarCliente = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -95,10 +100,13 @@ const eliminarCliente = (req, res) => __awaiter(void 0, void 0, void 0, function
                 activo: false
             }
         });
-        res.status(200).json(eliminarCliente);
+        res.status(200).json({
+            'data': eliminarCliente,
+            'message': "cliente eliminado con exito"
+        });
     }
     catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ 'error': e, 'message': "error al eliminar el cliente" });
     }
 });
 exports.default = {

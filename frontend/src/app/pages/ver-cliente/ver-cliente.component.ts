@@ -58,26 +58,23 @@ export class VerClienteComponent implements OnInit {
   }
   guardarCliente() {
     const fechaSeleccionada = new Date(this.fecha_nacimiento)
-    this.cliente.fecha_nacimiento = fechaSeleccionada.toISOString()
-    console.log(this.cliente.fecha_nacimiento)
-    console.log(this.cliente);
-    
-    console.log(this.id_cliente);
+    this.cliente.fecha_nacimiento = fechaSeleccionada.toISOString() 
+
+    console.log(this.cliente.fecha_nacimiento);
     
 
     this.clienteService.actualizarCliente(this.id_cliente, this.cliente).pipe(
-      tap(data => {
-        console.log(data);
-        
+      tap(data => {      
         this.successMessage = data.message
         this.editMode = false;
+        this.editing = false
         this.obtenerCliente()
       }),
       catchError(e => {
         this.errorMessage = e.error.message
         throw e
       })
-    )
+    ).subscribe()
   }
 
 

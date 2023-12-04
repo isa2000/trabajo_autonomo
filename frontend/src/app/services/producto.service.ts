@@ -19,4 +19,15 @@ export class ProductoService {
   obtenerProductos():Observable<Producto>{
     return this.http.get<Producto>(`${url}ver/productos`)
   }
+  obtenerProducto(id:number):Observable<Producto>{
+    return this.http.get<Producto>(`${url}ver/producto/${id}`)
+  }
+
+  eliminarProducto(id:number):Observable<ProductoResponse>{
+    return this.http.delete<ProductoResponse>(`${url}eliminar/producto/${id}`)
+  }
+
+  actualizarProducto(id:number, body:any):Observable<ProductoResponse>{
+    return this.http.patch<ProductoResponse>(`${url}actualizar/producto/${id}`, body)
+  }
 }
