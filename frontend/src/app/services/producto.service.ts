@@ -13,21 +13,21 @@ export class ProductoService {
   constructor(private http: HttpClient) { }
 
   ingresarProducto(body:any): Observable<ProductoResponse>{
-    return this.http.post<ProductoResponse>(`${url}crear/producto`,body);
+    return this.http.post<ProductoResponse>(`${url}microservice/crear/producto`,body);
   }
 
   obtenerProductos():Observable<Producto>{
-    return this.http.get<Producto>(`${url}ver/productos`)
+    return this.http.get<Producto>(`${url}microservice/ver/productos`)
   }
   obtenerProducto(id:number):Observable<Producto>{
-    return this.http.get<Producto>(`${url}ver/producto/${id}`)
+    return this.http.get<Producto>(`${url}microservice/ver/producto/${id}`)
   }
 
   eliminarProducto(id:number):Observable<ProductoResponse>{
-    return this.http.delete<ProductoResponse>(`${url}eliminar/producto/${id}`)
+    return this.http.delete<ProductoResponse>(`${url}microservice/eliminar/producto/${id}`)
   }
 
   actualizarProducto(id:number, body:any):Observable<ProductoResponse>{
-    return this.http.patch<ProductoResponse>(`${url}actualizar/producto/${id}`, body)
+    return this.http.patch<ProductoResponse>(`${url}microservice/actualizar/producto/${id}`, body)
   }
 }

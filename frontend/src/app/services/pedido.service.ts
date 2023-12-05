@@ -17,18 +17,18 @@ export class PedidoService {
     return this.http.post<PedidoResponse>(`${url}crear/pedido`,body);
   }
   obtenerPedidos():Observable<Pedido>{
-    return this.http.get<Pedido>(`${url}ver/pedidos`)
+    return this.http.get<Pedido>(`${url}monolitico/ver/pedidos`)
   }
 
   obtenerPedido(id:number):Observable<Pedido>{
-    return this.http.get<Pedido>(`${url}ver/pedido/${id}`)
+    return this.http.get<Pedido>(`${url}monolitico/ver/pedido/${id}`)
   }
 
   eliminarPedido(id:number):Observable<PedidoResponse>{
-    return this.http.delete<PedidoResponse>(`${url}eliminar/pedido/${id}`)
+    return this.http.delete<PedidoResponse>(`${url}monolitico/eliminar/pedido/${id}`)
   }
 
   actualizarPedido(id:number, body:any):Observable<PedidoResponse>{
-    return this.http.patch<PedidoResponse>(`${url}actualizar/pedido/${id}`, body)
+    return this.http.patch<PedidoResponse>(`${url}monolitico/actualizar/pedido/${id}`, body)
   }
 }

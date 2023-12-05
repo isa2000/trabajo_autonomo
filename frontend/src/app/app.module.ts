@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
 import { FormatDatePipe } from './pipes/format-date.pipe';
 
-export const url = 'http://localhost:3000/api/v1/';
+export const url = 'http://localhost:8080/api/v1/';
 
 @NgModule({
   declarations: [
