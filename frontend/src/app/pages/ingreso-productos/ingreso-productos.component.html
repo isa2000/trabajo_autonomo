@@ -20,9 +20,6 @@
               <label for="telefono" class="form-label">Precio:</label>
               <input type="number" id="telefono" name="telefono" required [(ngModel)]="producto.precio" class="form-control">
           </div>
-      
-      
-          <button type="submit" class="btn btn-primary">Guardar producto</button>
       </form>
       
       <div *ngIf="successMessage" class="alert alert-success">

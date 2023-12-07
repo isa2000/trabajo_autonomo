@@ -17,6 +17,7 @@ import { VerPedidoComponent } from './pages/ver-pedido/ver-pedido.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
 import { FormatDatePipe } from './pipes/format-date.pipe';
+import { AboutComponent } from './pages/about/about.component';
 
 export const url = 'http://localhost:8080/api/v1/';
 
@@ -34,7 +35,8 @@ export const url = 'http://localhost:8080/api/v1/';
     VerProductoComponent,
     VerPedidoComponent,
     NavBarComponent,
-    FormatDatePipe
+    FormatDatePipe,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

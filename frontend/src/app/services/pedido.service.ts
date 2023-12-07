@@ -14,7 +14,7 @@ export class PedidoService {
   constructor(private http: HttpClient) { }
 
   ingresarPedido(body:any): Observable<PedidoResponse>{
-    return this.http.post<PedidoResponse>(`${url}crear/pedido`,body);
+    return this.http.post<PedidoResponse>(`${url}monolitico/crear/pedido`,body);
   }
   obtenerPedidos():Observable<Pedido>{
     return this.http.get<Pedido>(`${url}monolitico/ver/pedidos`)

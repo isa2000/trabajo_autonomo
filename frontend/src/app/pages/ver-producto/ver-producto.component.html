@@ -5,8 +5,16 @@
     <div class="p-3  mx-auto mb-3" style="max-width: 600px;">
         <h2>INFORMACION DE PRODUCTOS</h2>
     </div>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
     
-    <form class="p-3 border rounded mx-auto" style="max-width: 600px;">
+    <form class="p-3 border rounded mx-auto" style="max-width: 600px; background-color: #f7d9d9;">
       <div class="mb-3">
         <label for="nombre" class="form-label">Nombre:</label>
         <input type="text" id="nombre" name="nombre" [disabled]="!editing" [readonly]="!editing" required [(ngModel)]="producto.nombre" class="form-control">
@@ -30,12 +38,6 @@
   
     </form>
   
-    <div *ngIf="successMessage" class="alert alert-success">
-      {{ successMessage }}
-    </div>
-  
-    <div *ngIf="errorMessage" class="alert alert-danger">
-      {{ errorMessage }}
-    </div>
+    
   </div>
   

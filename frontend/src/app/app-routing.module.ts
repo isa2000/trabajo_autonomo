@@ -10,6 +10,7 @@ import { VerPedidosComponent } from './pages/ver-pedidos/ver-pedidos.component';
 import { VerClienteComponent } from './pages/ver-cliente/ver-cliente.component';
 import { VerProductoComponent } from './pages/ver-producto/ver-producto.component';
 import { VerPedidoComponent } from './pages/ver-pedido/ver-pedido.component';
+import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch:'full'},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path:'listar-pedidos',component:VerPedidosComponent},
   {path:'ver-cliente',component:VerClienteComponent},
   {path:'ver-producto',component:VerProductoComponent},
-  {path:'ver-pedido',component:VerPedidoComponent}
+  {path:'ver-pedido',component:VerPedidoComponent},
+  {path:'about', component:AboutComponent}
 ];
 
 @NgModule({
